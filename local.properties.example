@@ -1,0 +1,2 @@
+# 本机 Android SDK 位置示例：复制本文件为 local.properties 并改成自己的 SDK 路径
+sdk.dir=D:/Android/android-sdk

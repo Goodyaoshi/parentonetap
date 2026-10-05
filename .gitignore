@@ -1,0 +1,23 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/app/build
+/app/release
+.kotlin/
+*.apk
+*.ap_
+*.aab
+*.keystore
+*.jks
+keystore.properties
+*.log
+# 需求与个人信息文档，不入公开仓库
+方案.md
+项目信息.txt

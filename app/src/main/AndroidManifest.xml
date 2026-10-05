@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 定位权限：首页发位置 / 设当前位置为家（方案 3.1/3.7） -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 联网权限：仅用于设置页解析地图分享短链（方案 4.2，ShortLinkResolver）；
+         日常功能（定位/发位置/打车/打电话）依旧零网络请求 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Android 11+ 包可见性：探测微信（3.2 分享）与地图 App（3.3 渠道降级） -->
+    <queries>
+        <package android:name="com.tencent.mm" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="amapuri" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="qqmap" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".ParentOneTapApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.ParentOneTap">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ParentOneTap">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 桌面小组件（方案 3.5）：系统发送 APPWIDGET_UPDATE，exported=false 即可 -->
+        <receiver
+            android:name=".widget.ParentWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/parent_widget_info" />
+        </receiver>
+    </application>
+
+</manifest>

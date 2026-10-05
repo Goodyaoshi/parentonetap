@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 深浅色都由 Compose 主题控制，这里只提供无 ActionBar 的原生基底 -->
+    <style name="Theme.ParentOneTap" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
